@@ -1,0 +1,15 @@
+add 41 1
+add 41 4
+add 17 5
+add 3 1
+add 2 2
+add 64 2
+add 15 2
+delete 18
+print
+delete 2
+print
+search 9
+min
+search 17
+max
