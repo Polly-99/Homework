@@ -63,7 +63,7 @@ struct TNode {
 
 	void print(std::ofstream & file_out)
 	{
-		std::cout << "(" Key << ", " << Data << ") ";
+		file_out << "(" Key << ", " << Data << ") ";
 		if (Left != nullptr)
 			Left->print();
 		if (Right != nullptr)
