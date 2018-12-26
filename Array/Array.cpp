@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 		if (!file_out.is_open())
 			throw "ERROR! Wrong name of output file.";
 
-		TArray arr(10);
+		TArray arr;
 		std::string line;
 		while (!file_in.eof())
 		{

@@ -43,6 +43,11 @@ public:
 		delete[] Ptr;
 	}
 
+	std::pair<int, int> & operator[](int index)
+	{
+		return Ptr[index];
+	}
+
 	void add(int key, int data) {
 		if (Size + 1 > Capacity)
 			resize();
