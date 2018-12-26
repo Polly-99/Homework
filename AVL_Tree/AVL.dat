@@ -1,14 +1,33 @@
 add 23 4
+delete 23
+add 23 4
 add 47 5
 add 3 4
 add 99 1
 add 8 21
+print
 add 16 3
+print
 add 57 7
+print
 add 99 0
 add 38 1
 add 74 4
-search 16
-search 2
+add 48 1
+add 1 23
+print
+delete 47
+print
+delete 38
+print
+delete 3
+print
+delete 48
+print
+delete 23
+print
+delete 66
 min
 max
+search 16
+search 2
