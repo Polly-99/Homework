@@ -5,13 +5,13 @@ add 3 1
 add 2 2
 add 64 2
 add 15 2
-add -21 18
-add -20 12
+add 21 18
+add 28 12
 add 7 23
 add 20 23
 print
 delete 7
-delete -20
+delete 28
 delete 2
 delete 3
 delete 18

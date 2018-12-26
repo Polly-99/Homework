@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
 				file_out << "\nmax: " << table.max() << "\n";
 			if (line == "print") {
 				file_out << "\nprint:\n";
-				table.print(file_out)
+				table.print(file_out);
 			}
 		}
 		file_out.close();

@@ -63,11 +63,11 @@ struct TNode {
 
 	void print(std::ofstream & file_out)
 	{
-		file_out << "(" Key << ", " << Data << ") ";
+		file_out << "(" << Key << ", " << Data << ") ";
 		if (Left != nullptr)
-			Left->print();
+			Left->print(file_out);
 		if (Right != nullptr)
-			Right->print();
+			Right->print(file_out);
 	}
 };
 
