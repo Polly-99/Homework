@@ -1,5 +1,4 @@
 #include "Hash_Table.h"
-#include <fstream>
 #include <string>
 
 int value(std::string line, int first, int last)
@@ -81,9 +80,7 @@ int main(int argc, char *argv[])
 				file_out << "\nmax: " << table.max() << "\n";
 			if (line == "print") {
 				file_out << "\nprint:\n";
-				file_out.close();
-				table.print(argv[2]);
-				file_out.open(argv[2], std::ios_base::in | std::ios_base::app);
+				table.print(file_out)
 			}
 		}
 		file_out.close();

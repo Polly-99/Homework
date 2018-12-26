@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 
 struct TCell {
 	int Key;
@@ -146,29 +147,20 @@ public:
 		return max;
 	}
 
-	void print(const char * filename)
+	void print(std::ofstream & file_out)
 	{
-		try {
-			std::ofstream file_out(filename, std::ios_base::in | std::ios_base::app);
-			if (!file_out.is_open())
-				throw "ERROR! Wrong name of output file.";
-			TCell * cur = nullptr;
-			for (int i = 0; i < N; i++)
-			{
-				file_out << i << ": ";
-				if (table[i]) {
-					cur = table[i];
-					while (cur) {
-						file_out << "(" << cur->Key << "; " << cur->Data << "), ";
-						cur = cur->Next;
-					}
+		TCell * cur = nullptr;
+		for (int i = 0; i < N; i++)
+		{
+			file_out << i << ": ";
+			if (table[i]) {
+				cur = table[i];
+				while (cur) {
+					file_out << "(" << cur->Key << "; " << cur->Data << ") ";
+					cur = cur->Next;
 				}
-				file_out << "\n";
 			}
-			file_out.close();
-		}
-		catch (const char * str) {
-			std::cout << str << std::endl;
+			file_out << "\n";
 		}
 	}
 };
