@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 
 struct TNode {
 	int Data;
@@ -60,14 +61,14 @@ struct TNode {
 			Height = 1;
 	}
 
-	/*void print()
+	void print(std::ofstream & file_out)
 	{
-		std::cout << Key << " ";
+		std::cout << "(" Key << ", " << Data << ") ";
 		if (Left != nullptr)
 			Left->print();
 		if (Right != nullptr)
 			Right->print();
-	}*/
+	}
 };
 
 class TTree
@@ -233,40 +234,49 @@ public:
 		return cur->Key;
 	}
 
-	/*TNode * remove(const int & key) { 
+	TNode * remove(const int & key) {
 		TNode * del = search(key);
 		if (del == nullptr)
 			return nullptr;
-		TNode * cur = del->Parent;
-		if (del->Left || del->Right) {
-			if (del->Left) {
+		TNode * cur = nullptr;
+		if (del->Left || del->Right) { //если есть потомки
+			if (del->Left) { //если есть левый потомок
 				cur = del->Left;
 				while (cur->Right) {
 					cur = cur->Right;
 				}
-				cur->Parent->Right = nullptr;
+				if (del->Right)
+					del->Right->Parent = cur;
 			}
-			else
+			else { // если нет левого, но есть правый потомок
 				cur = del->Right;
+				while (cur->Left) {
+					cur = cur->Left;
+				}
+			}
+			if (cur->Parent->Key > cur->Key)
+				cur->Parent->Left = nullptr;
+			else
+				cur->Parent->Right = nullptr;
 			cur->Parent = del->Parent;
 			cur->Right = del->Right;
 			cur->Left = del->Left;
-			if (cur->Parent->Key > cur->Key)
-				cur->Parent->Left = cur;
-			else
-				cur->Parent->Right = cur;
 		}
+		if (del == Root)
+			Root = cur;
 		else {
-			if (cur->Key > del->Key)
-				cur->Left = nullptr;
+			if (del->Parent->Key > del->Key)
+				del->Parent->Left = cur;
 			else
-				cur->Right = nullptr;
+				del->Parent->Right = cur;
 		}
+		if (!cur)
+			cur = del->Parent;
 		del->Parent = nullptr;
 		del->Left = nullptr;
 		del->Right = nullptr;
 		delete del;
-		while (cur)
+		while (cur) // балансировка
 		{
 			cur->fixHeight();
 			if (abs(cur->is_balanced()) > 1) {
@@ -277,8 +287,8 @@ public:
 		return cur;
 	}
 
-	void print() {
+	void print(std::ofstream & file_out) {
 		TNode * cur = Root;
-		cur->print();
-	}*/
+		cur->print(file_out);
+	}
 };

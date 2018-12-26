@@ -1,5 +1,4 @@
 #include "TTree.h"
-#include <fstream>
 #include <string>
 
 int value(std::string line, int first, int last)
@@ -77,14 +76,12 @@ int main(int argc, char *argv[])
 				else
 					file_out << "\n" << value_last(line) << " is not found \n";
 			}
-			/*if (line.find("delete ") == 0)
+			if (line.find("delete ") == 0)
 				avl.remove(value_last(line));
 			if (line == "print") {
 				file_out << "\nprint:\n";
-				file_out.close();
-				avl.print();
-				file_out.open(argv[2], std::ios_base::in | std::ios_base::app);
-			}*/
+				avl.print(file_out);
+			}
 		}
 		file_out.close();
 		file_in.close();
