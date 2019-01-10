@@ -1,0 +1,18 @@
+add 16 22
+add 3 3
+add 14 232
+min 
+max
+add 27 1
+add 9 0
+min
+max
+add 40 45
+add 6 12
+add 20 23
+add 0 12
+min
+max
+delete 14
+search 9
+print

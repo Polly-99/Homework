@@ -3,6 +3,7 @@
 #include <fstream>
 
 struct TNode {
+
 	int Data;
 	int Key;
 	int Height;
@@ -86,10 +87,16 @@ class TTree
 		node->Right = cur;
 		cur->fixHeight();
 		node->fixHeight();
-		if (node->Parent->Key > node->Key)
-			node->Parent->Left = node;
-		else
-			node->Parent->Right = node;
+		if (node->Parent)
+		{
+			if (node->Parent->Key > node->Key)
+				node->Parent->Left = node;
+			else
+				node->Parent->Right = node;
+		}
+		else {
+			Root = node;
+		}
 		return node;
 	}
 
@@ -104,10 +111,16 @@ class TTree
 		node->Left = cur;
 		cur->fixHeight();
 		node->fixHeight();
-		if (node->Parent->Key > node->Key)
-			node->Parent->Left = node;
-		else
-			node->Parent->Right = node;
+		if (node->Parent)
+		{
+			if (node->Parent->Key > node->Key)
+				node->Parent->Left = node;
+			else
+				node->Parent->Right = node;
+		}
+		else {
+			Root = node;
+		}
 		return node;
 	}
 
@@ -200,7 +213,7 @@ public:
 			cur = cur->Parent;
 			cur->fixHeight();
 			if (abs(cur->is_balanced()) > 1) {
-				cur = balance(cur);
+						cur = balance(cur);
 			}
 		}
 		return cur;
